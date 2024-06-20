@@ -21,8 +21,11 @@ let lastBytesReceived;
 let videoIsPlaying = false;
 let streamVideoOpacity = 0;
 
+// Set Compatibility Mode to 'on' to enable compatibility mode for the stream
+const compatibility_mode = 'off'; // 'on', 'off' or 'auto'
+
 // Set this variable to true to request stream warmup upon connection to mitigate potential jittering issues
-const stream_warmup = true;
+const stream_warmup = false;
 let isStreamReady = !stream_warmup;
 
 const idleVideoElement = document.getElementById('idle-video-element');
@@ -66,7 +69,7 @@ connectButton.onclick = async () => {
       Authorization: `Basic ${DID_API.key}`,
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ ...presenterInputByService[DID_API.service], stream_warmup }),
+    body: JSON.stringify({ ...presenterInputByService[DID_API.service], compatibility_mode, stream_warmup }),
   });
 
   const { id: newStreamId, offer, ice_servers: iceServers, session_id: newSessionId } = await sessionResponse.json();
