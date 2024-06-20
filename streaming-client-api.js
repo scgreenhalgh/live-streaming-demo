@@ -22,7 +22,7 @@ let videoIsPlaying = false;
 let streamVideoOpacity = 0;
 
 // Set Compatibility Mode to 'on' to enable compatibility mode for the stream
-const compatibility_mode = 'off'; // 'on', 'off' or 'auto'
+const compatibility_mode = 'on'; // 'on', 'off' or 'auto'
 
 // Set this variable to true to request stream warmup upon connection to mitigate potential jittering issues
 const stream_warmup = false;
